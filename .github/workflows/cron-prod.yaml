@@ -1,0 +1,16 @@
+name: 5-minute-cron-prod
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Combine API
+        run: |
+          curl --request POST \
+          --url 'https://www.metagirlfriends.com/api/metadata/combine' \
+      - name: Recalculate API
+        run: |
+          curl --request POST \
+          --url 'https://www.metagirlfriends.com/api/rarity/recalculate'

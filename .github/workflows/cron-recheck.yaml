@@ -1,0 +1,12 @@
+name: 4-pm-recheck-cron
+on:
+  schedule:
+    - cron: '0 4 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recheck combine API
+        run: |
+          curl --request POST \
+          --url 'https://www.metagirlfriends.com/api/metadata/recheck-combine'
